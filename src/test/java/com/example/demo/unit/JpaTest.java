@@ -27,7 +27,7 @@ public class JpaTest {
     void 카테고리가_잘_들어가는지(){
         //given
         Category cate = Category.builder()
-                .categoryName("test_category")
+                .name("test_category")
                 .build();
 
         //when
@@ -44,16 +44,16 @@ public class JpaTest {
     @Test
     void 카테고리가_잘_조회되는지(){
         Category cate1 = Category.builder()
-                .categoryName("cate1")
+                .name("cate1")
                 .build();
         Category cate2 = Category.builder()
-                .categoryName("cate2")
+                .name("cate2")
                 .build();
         Category cate3 = Category.builder()
-                .categoryName("cate3")
+                .name("cate3")
                 .build();
         Category cate4 = Category.builder()
-                .categoryName("cate4")
+                .name("cate4")
                 .build();
 
         entityManager.persist(cate1);
@@ -78,10 +78,10 @@ public class JpaTest {
     @Test
     void 카테고리가_잘_삭제되는지(){
         Category cate1 = Category.builder()
-                .categoryName("cate1")
+                .name("cate1")
                 .build();
         Category cate2 = Category.builder()
-                .categoryName("cate2")
+                .name("cate2")
                 .build();
 
         entityManager.persist(cate1);

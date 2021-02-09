@@ -1,16 +1,14 @@
 package com.example.demo.entity;
 
-import com.example.demo.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 public class Category extends BaseTimeEntity {
@@ -18,11 +16,12 @@ public class Category extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String categoryName;
+    @Column(name = "name")
+    private String name;
 
     @Builder
-    public Category(Long id, String categoryName) {
+    public Category(Long id, String name) {
         this.id = id;
-        this.categoryName = categoryName;
+        this.name = name;
     }
 }

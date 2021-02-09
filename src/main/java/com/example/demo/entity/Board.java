@@ -1,11 +1,11 @@
 package com.example.demo.entity;
 
-import com.example.demo.BaseTimeEntity;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.sun.istack.Nullable;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 public class Board extends BaseTimeEntity {
@@ -13,16 +13,16 @@ public class Board extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long title;
-    private Long content;
-    private Long user;
+    private String title;
+    private String content;
+    private String user;
 
     @ManyToOne
-    @JoinColumn(columnDefinition = "id")
+    @JoinColumn(columnDefinition = "category_id", nullable = false)
     private Category category;
 
     @Builder
-    public Board(Long id, Long title, Long content, Long user, Category category) {
+    public Board(Long id, String title, String content, String user, Category category) {
         this.id = id;
         this.title = title;
         this.content = content;
