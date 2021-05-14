@@ -6,24 +6,30 @@
     <title>Title</title>
 </head>
 <body>
+    <h1 onclick="location.href='/'">YGD </h1>
+    <button type="button" onclick="location.href='/board/all'">전체글보기 </button>
     <h1>보드 페이지 </h1>
     <form action="#">
-        <input type="text" id="title">
-        <input type="text" id="content">
-        <input type="text" id="user">
-        <input type="hidden" id="category" value={{category}}>
+        title : <input type="text" id="title">
+        <br>
+        content : <input type="text" id="content">
+        <br>
+        user : <input type="text" id="user">
+        <br>
         <button type="button" onclick="boardSubmit()">글쓰기 </button>
     </form>
     <ul>
         {{#each boards}}
             <li>
-                {{title}}
-
+                <a onclick="location.href='http://localhost:8080/board/{{id}}'">
+                    {{title}}
+                </a>
             </li>
         {{/each}}
     </ul>
     <script>
-        const boardSubmit = ()=>{
+        const boardSubmit = () =>{
+
             $.ajax({
                 url : "http://localhost:8080/api/board",
                 type : "post",
@@ -32,12 +38,13 @@
                     title : $('#title').val(),
                     content : $('#content').val(),
                     user : $('#user').val(),
-                    categoryId: $('#category').val()
+                    categoryId: {{category}}
                 }),
                 success : ()=>{
                     location.reload();
                 }
             })
+            console.log(location.host)
         }
     </script>
 </body>

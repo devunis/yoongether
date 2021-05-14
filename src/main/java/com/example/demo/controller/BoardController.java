@@ -28,6 +28,7 @@ public class BoardController {
     public ResponseEntity<Board> findBoardById(@PathVariable Long id){
         return ResponseEntity.ok(boardService.findBoardById(id));
     }
+
     @GetMapping("/api/boards/{id}")
     public ResponseEntity<Page<Board>> findBoardsByCategoryId(@PathVariable("id") Long categoryId, Pageable pageable){
         return ResponseEntity.ok(boardService.findAllBoardByCategoryId(categoryId, pageable));
